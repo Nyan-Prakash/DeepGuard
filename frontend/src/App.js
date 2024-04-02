@@ -3,7 +3,7 @@ import bg from './cool-background.svg';
 import bg2 from './cool-background2.png';
 import bg3 from './cool-background3.png';
 import gsap from "gsap";
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { useDropzone } from 'react-dropzone';
 import FileForm from './Componets/FileForm';
 import SplitTextJS from 'split-text-js';
@@ -269,26 +269,29 @@ function App() {
   }, []);
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
-  const titles = gsap.utils.toArray("p");
-  const tl = gsap.timeline({repeat: -1, yoyo: true, repeatDelay: 1});
+  useEffect(() => {
+    // Ensure elements are rendered
+    const titles = gsap.utils.toArray('p'); // Make sure this targets the correct elements
+    if (titles.length > 0) {
+      const tl = gsap.timeline({repeat: -1, yoyo: true, repeatDelay: 1});
 
-  titles.forEach(title => {
-    const splitTitle = new SplitTextJS(title);
-
-    tl
-      .from(splitTitle.chars, {
-        opacity: 0,
-        y: 80,
-        rotateX: 90,
-        stagger: 0.02
-      }, "<")
-      .to(splitTitle.chars, {
-        opacity: 0,
-        y: -80,
-        rotateX: 90,
-        stagger: 0.02
-      }, "<1")
-  });
+      titles.forEach(title => {
+        const splitTitle = new SplitTextJS(title, {type: "chars, words, lines"});
+        tl.from(splitTitle.chars, {
+          opacity: 0,
+          y: 80,
+          rotateX: 90,
+          stagger: 0.02
+        }, "<")
+        .to(splitTitle.chars, {
+          opacity: 0,
+          y: -80,
+          rotateX: 90,
+          stagger: 0.02
+        }, "<1");
+      });
+    }
+  }, []);
 
 
 

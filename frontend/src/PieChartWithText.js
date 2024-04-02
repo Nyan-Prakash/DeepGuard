@@ -13,9 +13,9 @@ const PieChartWithText = ({ score, text }) => {
   
   let color;
 
-  if(text == "Visual Data")
+  if(text === "Visual Data")
   {
-        if(score == "real")
+        if(score === "real")
         {
             score = 1;
         }

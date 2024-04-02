@@ -434,7 +434,6 @@ function App() {
         {isChecked ? 'Use Youtube' : 'Use Youtube'}
       </label>
       {visualData && <h2>{visualData}</h2>}
-      {isChecke1d && <h2>yes</h2>}
       <h1>{ytImage}</h1>
       <h1></h1>
   </div>
@@ -485,26 +484,33 @@ function App() {
                   flexDirection: 'row',
                   justifyContent: 'space-around',
                   width: '100%',
-                  margin: '20px 0',
+                  margin: '-10px 20px',
                   position: 'relative',
-                  top: '-40%'
+                  top: '-36%',
+                  right: '3%'
                 }}>
-                <PieChartWithText text={"Text Score"} score={text_score1}></PieChartWithText>
-                <PieChartWithText text={"Visual Data"} score={visualData}></PieChartWithText>
-                <PieChartWithText text={"Audio Data"} score={audioData_Score}></PieChartWithText>
+                <PieChartWithText text={"Text Score"} score={0}></PieChartWithText> 
+                <PieChartWithText text={"Visual Data"} score={0}></PieChartWithText>
+                <PieChartWithText text={"Audio Data"} score={0}></PieChartWithText>
+              
               </div>
               <div style={{
-                  display: 'flex',
                   flexDirection: 'row',
                   justifyContent: 'space-around',
                   width: '100%',
                   margin: '20px 0',
                   position: 'relative',
                   top: '-25%',
-                  right: '35%'
+                  right: '-5%'
                 }}>
-                <h4>Text Explanation: {Text_explanation1}</h4>
+                <h4>Text Explanation:    </h4>
+
+
               </div>
+              <h1 style={{position:'relative', top: '-10', textAlign: 'center', color:'#0062cc' }}>This is only a frontend demo</h1>
+
+
+
             </div>
           </>
         )}
